@@ -1,0 +1,11 @@
+
+<div class="grid grid-cols-2 gap-4">
+  <div class="col-span-1 font-bold text-gray-700 border-2 border-yellow-300 rounded p-2 hover:bg-yellow-100 transition-bg duration-300" [ngClass]="{ 'bg-yellow-100': isSelected }">
+    {{ apiSubItem.itemName }}
+  </div>
+  <div class="col-span-1 grid grid-rows-2 gap-1">
+    <div class="row-span-1 font-bold text-green-600">AED {{ apiSubItem.unitPrice | number: '1.2-2'}} /{{apiSubItem.unitOfMeasure
+    }}</div>
+    <div class="row-span-1 text-gray-700">{{ apiSubItem.subTitle }}</div>
+  </div>
+</div>

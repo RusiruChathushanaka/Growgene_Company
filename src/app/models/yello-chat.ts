@@ -3,12 +3,12 @@ export interface YelloChat {
   data: ApiData;
 }
 
-interface ApiData {
+export interface ApiData {
   title: string;
   itemTitle: string;
   items: ApiItem[];
 }
-interface ApiItem {
+export interface ApiItem {
   displayText: string;
   image: string;
   count: number;
@@ -18,7 +18,7 @@ interface ApiItem {
   items: ApiSubItem[];
 }
 
-interface ApiSubItem {
+export interface ApiSubItem {
   unitPrice?: number;
   itemName: string;
   subTitle?: string;

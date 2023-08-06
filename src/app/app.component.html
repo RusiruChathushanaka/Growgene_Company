@@ -1,5 +1,42 @@
-<h1 class="text-6xl font-bold underline">
-  Hello world!
-</h1>
+<p class="text-4xl font-Nunito font-bold text-center text-gray-500 px-4 py-10">
+  Growgene Company
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-10 pb-4">
+  <ng-container *ngIf="(dataLoaded$|async);else loading">
+  <div class="col-span-1 border border-gray-300 rounded-md shadow-md p-4">
+    <p class="text-base text-gray-700 font-Nunito pt-4">
+      {{title$|async}}
+    </p>
+    <div class="flex flex-row">
+      <div *ngFor="let item of apiItems;let i = index" class="m-2 font-Nunito" [ngClass]="{ 'bg-yellow-100': selectedCleanersIndex === i }" >
+        <app-cleaners [apiItem]="item" (itemSelected)="onItemSelected($event)"></app-cleaners>
+      </div>
+    </div>
+
+    <div class="text-base text-gray-700 font-Nunito pt-4">
+      <p>{{itemTitle$|async}}</p>
+    </div>
+
+  <div *ngIf="selectedCleaners" >
+    <div *ngFor="let subItem of selectedCleaners.items;let i=index" class="mb-4 font-Nunito">
+      <app-cleaning-rates [apiSubItem]="subItem" [isSelected]="selectedSubItem === subItem" (click)="onSubItemSelect(subItem)"></app-cleaning-rates>
+    </div>
+  </div>
+
+  </div>
+</ng-container>
+<div class="col-span-1 font-Nunito">
+  <div>
+    <app-shopping-cart [data$]="total$"></app-shopping-cart>
+  </div>
+</div>
+</div>
 
 <router-outlet></router-outlet>
+
+<ng-template #loading>
+  <div class="flex h-100 items justify-center">
+
+    <app-data-loading></app-data-loading>
+  </div>
+</ng-template>
